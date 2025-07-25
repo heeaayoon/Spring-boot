@@ -14,16 +14,13 @@ import edu.pnu.domain.MemberDTO;
 @Repository
 public class MemberDao {
 	private Connection con; 
-	
-	public Connection getCon() {
-		return con;
-	}
 
 	//기본 생성자
 	public MemberDao() {
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			// application.properties에 설정한 정보로 DB 연결 시도
-			String url = "jdbc:mysql://localhost:3306/musthave";
+			String url = "jdbc:mysql://localhost:3306/bootmission";
 			String id = "musthave";
 			String pwd = "1234";
 			con = DriverManager.getConnection(url,id,pwd);
@@ -41,8 +38,9 @@ public class MemberDao {
 	public List<MemberDTO> getAllMember() {
 		//쿼리문
 		String query = "select id, pass, name, regidate from member";
+		System.out.println(query);
 		try {
-			psmt = getCon().prepareStatement(query);
+			psmt = con.prepareStatement(query);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) { //dto에 값 저장
@@ -60,4 +58,8 @@ public class MemberDao {
 		return list; //저장된 내용을 전부 반환
 	}
 
+	public MemberDTO getMemberById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

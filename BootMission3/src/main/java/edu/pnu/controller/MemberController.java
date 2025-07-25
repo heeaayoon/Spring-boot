@@ -21,8 +21,8 @@ import edu.pnu.service.MemberService;
 public class MemberController {
 
 	private MemberService memberService;
-	public MemberController(MemberService memberService) {
-		this.memberService = memberService;
+	public MemberController() {
+		this.memberService = new MemberService();
 	}
 
 	//전체 검색(read - select All)

@@ -8,8 +8,8 @@ import edu.pnu.domain.MemberDTO;
 public class MemberService {
 	private MemberDao memberDao;
 	
-	public MemberService(MemberDao memberDao) {
-		this.memberDao = memberDao;
+	public MemberService() {
+		this.memberDao = new MemberDao();
 	}
 	
 	//전체 검색(read - select All)
@@ -19,13 +19,9 @@ public class MemberService {
 	
 //	//일부만 검색(read - select One)
 //	public MemberDTO getMemberById(Integer id) {
-//		for(MemberDTO m : list) {
-//			if(m.getId().equals(id))
-//				return m;
-//		}
-//		return null;
+//		return memberDao.getMemberById(id);
 //	}
-//	
+	
 //	//입력(Create - insert)
 //	public MemberDTO postMember(MemberDTO memberDTO) {
 //		list.add(memberDTO);
