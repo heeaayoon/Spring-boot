@@ -31,34 +31,34 @@ public class MemberController {
 		return memberService.getAllMember();
 	}
 	
-//	//일부만 검색(read - select One)
-//	@GetMapping("/member/{id}")
-//	public MemberDTO getMemberById(@PathVariable Integer id){
-//		return memberService.getMemberById(id);
-//	}
-//		
-//	//입력(Create - insert)
-//	@PostMapping("/member")
-//	public MemberDTO postMember(@RequestBody MemberDTO memberDTO) {
-//		return memberService.postMember(memberDTO);
-//		
-//	}
-//
-//	//삭제(Delete - delete)
-//	@DeleteMapping("/member/{id}")
-//	public void deleteMember(@PathVariable Integer id){
-//		memberService.deleteMember(id);
-//	}
-//	
-//	//전체 수정(put - 객체 교체)
-//	@PutMapping("/member/{id}")
-//	public MemberDTO putmember(@PathVariable Integer id, @RequestBody MemberDTO memberDTO) {
-//		return memberService.putmember(id,memberDTO);		
-//	}
-//	
-//	//일부만 수정(patch - 일부 정보만 교체)
-//	@PatchMapping("/member/{id}")
-//	public MemberDTO patchmember(@PathVariable Integer id, @RequestBody MemberDTO memberDTO) {
-//		return memberService.patchmember(id,memberDTO);
-//	}
+	//일부만 검색(read - select One)
+	@GetMapping("/member/{id}")
+	public MemberDTO getMemberById(@PathVariable Integer id){
+		return memberService.getMemberById(id);
+	}
+		
+	//입력(Create - insert)
+	@PostMapping("/member")
+	public MemberDTO postMember(@RequestBody MemberDTO memberDTO) {
+		return memberService.postMember(memberDTO);
+		
+	}
+
+	//삭제(Delete - delete)
+	@DeleteMapping("/member/{id}")
+	public void deleteMember(@PathVariable Integer id){
+		memberService.deleteMember(id);
+	}
+	
+	//전체 수정(put - 객체 교체)
+	@PutMapping("/member/{id}")
+	public MemberDTO putmember(@PathVariable Integer id, @RequestBody MemberDTO memberDTO) {
+		return memberService.putmember(id,memberDTO);		
+	}
+	
+	//일부만 수정(patch - 일부 정보만 교체)
+	@PatchMapping("/member/{id}")
+	public MemberDTO patchmember(@PathVariable Integer id, @RequestBody MemberDTO memberDTO) {
+		return memberService.patchmember(id,memberDTO);
+	}
 }
