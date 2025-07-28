@@ -66,8 +66,7 @@ public class MemberDao {
 
 	//일부만 검색(read - select One)
 	public MemberDTO getMemberById(Integer id) {
-		
-		MemberDTO list = new MemberDTO();
+		MemberDTO list = null; //검색할 id가 존재하는지 확인하기 위해 처음에는 null로 초기화 -> 데이터가 없는 상태임
 		//쿼리문
 		String query = "select id, pass, name, regidate from member where id = ?";
 		//System.out.println(query);
@@ -76,7 +75,9 @@ public class MemberDao {
 			psmt.setInt(1, id); 
 			rs = psmt.executeQuery();
 			
-			if(rs.next()) {
+			if(rs.next()) { //결과가 존재할 경우에만, 객체를 생성
+				System.out.println("해당 id가 존재합니다.");
+				list = new MemberDTO(); //여기서 객체를 생성
 				list.setId(rs.getInt(1));
 				list.setName(rs.getString("name"));
 				list.setPass(rs.getString("pass"));
@@ -86,7 +87,7 @@ public class MemberDao {
 			System.out.println("id에 해당하는 정보를 가져오는 중 예외 발생");
 			e.printStackTrace();
 		}		
-		return list; //저장된 내용을 전부 반환
+		return list; //데이터가 없으면 null을 반환, 데이터가 존재하면 값이 채워진 객체를 반환
 	}
 
 	//입력(Create - insert)
@@ -117,6 +118,7 @@ public class MemberDao {
         if (existingMember == null) {
             System.out.println("ID " + id + "에 해당하는 값이 존재하지 않습니다.");
         }
+        
 		//쿼리문
 		String query = "delete from member where id = ?";
 		try {
@@ -137,6 +139,7 @@ public class MemberDao {
             System.out.println("ID " + id + "에 해당하는 값이 존재하지 않습니다.");
             return null; // 대상이 없으면 null 반환
         }
+        
 		//쿼리문
 		String query = "update member set pass = ?, name =? where id = ?";
 		try {
