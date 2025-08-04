@@ -7,12 +7,12 @@ import javax.persistence.*;
 
 
 @Entity
-@Table
+//@Table(name="E_BOARD", uniqueConstraints = {@UniqueConstraint(columnNames = {"TITLE", "WRITER"})})
 public class Board implements Serializable {
-	
 	//private static final long serialVersionUID = 1L;
 	
 	@Id
+	//@GeneratedValue
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long seq;
 	private String title;
