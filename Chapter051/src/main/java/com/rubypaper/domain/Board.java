@@ -34,7 +34,7 @@ public class Board {
 	private Date createDate;
 	private Long cnt;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="MEMBER_ID")
 	private Member member;
 }
