@@ -34,7 +34,7 @@ public class Board {
 	private Date createDate;
 	private Long cnt;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY) //LazyInitializationException 발생
 	@JoinColumn(name="MEMBER_ID")
 	private Member member;
 }

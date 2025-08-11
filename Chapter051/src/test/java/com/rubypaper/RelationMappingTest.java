@@ -11,6 +11,8 @@ import com.rubypaper.domain.Member;
 import com.rubypaper.persistence.BoardRepository;
 import com.rubypaper.persistence.MemberRepository;
 
+import jakarta.transaction.Transactional;
+
 @SpringBootTest
 public class RelationMappingTest {
 	@Autowired private BoardRepository boardRepo;
@@ -53,6 +55,7 @@ public class RelationMappingTest {
 	}
 	
 	@Test
+	@Transactional
 	public void testManyToOneSelect() {
 		Board board = boardRepo.findById(5L).get();
 		System.out.println("["+board.getSeq()+"번 게시글 정보]");
