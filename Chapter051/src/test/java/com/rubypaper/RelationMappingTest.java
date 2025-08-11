@@ -55,7 +55,7 @@ public class RelationMappingTest {
 	}
 	
 	@Test
-	@Transactional
+	//@Transactional
 	public void testManyToOneSelect() {
 		Board board = boardRepo.findById(5L).get();
 		System.out.println("["+board.getSeq()+"번 게시글 정보]");

@@ -2,6 +2,8 @@ package com.rubypaper.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +23,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString //(exclude = "member") //StackOverflowError 제거하기 위한 방법 1
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -41,7 +45,14 @@ public class Board {
 //	private Member member;
 	
 	//inner join
+	@ToString.Exclude //StackOverflowError 제거하기 위한 방법 2
+	@JsonIgnore 
 	@ManyToOne
-	@JoinColumn(name="MEMBER_ID", nullable = false)
-	private Member member;
+	@JoinColumn(name="mid")
+	Member member;
+	
+	public void setMember(Member member) {
+		this.member = member;
+		member.getBoardList().add(this);
+	}
 }
