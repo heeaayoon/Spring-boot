@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rubypaper.domain.Board;
 import com.rubypaper.service.BoardService;
@@ -18,14 +20,22 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@GetMapping("/getBoardList")
+//	@GetMapping("/getBoardList")
+//	public String getBoardList(Model model) {
+//		List<Board> boardList = boardService.getBoardList();
+//
+//		model.addAttribute("boardList", boardList); //Request 영역에 속성으로 저장됨
+//		return "getBoardList";
+//	}
+	
+	@RequestMapping(value="/getBoardList", method = {RequestMethod.GET, RequestMethod.POST}) //get, post 방식 둘 다 사용 가능해짐
 	public String getBoardList(Model model) {
 		List<Board> boardList = boardService.getBoardList();
 
 		model.addAttribute("boardList", boardList); //Request 영역에 속성으로 저장됨
 		return "getBoardList";
 	}
-	
+		
 	@GetMapping("/insertBoard")
 	public String insertBoardView() {
 		return "insertBoard"; //WEB-INF 아래의 insertBoard.jsp 호출
@@ -43,6 +53,16 @@ public class BoardController {
 		return "getBoard";
 	}
 	
+	@PostMapping("/updateBoard")
+	public String updateBoard(Board board) {
+		boardService.updateBoard(board); //BoardService 아래의 BoardServiceImpl의 updateBoard() 호출
+		return "forward:getBoardList";
+	}
 	
+	@GetMapping("deleteBoard")
+	public String deleteBoard(Board board) {
+		boardService.deleteBoard(board); //BoardService 아래의 BoardServiceImpl의 deleteBoard() 호출
+		return "forward:getBoardList";
+	}
 	
 }
