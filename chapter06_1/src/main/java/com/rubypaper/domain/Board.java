@@ -22,7 +22,7 @@ import lombok.ToString;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity //Entity 클래스로 변환 //클래스 이름과 동일한 테이블과 매핑됨
+@Entity //클래스 이름과 동일한 테이블과 매핑됨
 public class Board {
 	@Id //테이블의 기본키 매핑
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //@Id가 선언된 필드에 기본 키 값을 자동으로 할당

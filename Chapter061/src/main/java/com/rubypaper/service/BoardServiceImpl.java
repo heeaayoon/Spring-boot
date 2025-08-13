@@ -15,7 +15,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<Board> getBoardList() {
-		return boardRepo.findAll();
+		return boardRepo.findAll(); // findAll() : 해당 Repository에 매핑된 테이블의 모든 데이터를 조회하는 함수
 	}
 
 	//게시글 상세보기 
