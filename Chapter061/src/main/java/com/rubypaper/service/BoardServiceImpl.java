@@ -1,7 +1,6 @@
 package com.rubypaper.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +18,16 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepo.findAll();
 	}
 
+	//게시글 상세보기 
 	@Override
 	public Board getBoard(Board board) {
-		return null;
+		//cnt 증가시키기
+		Board findBoard = boardRepo.findById(board.getSeq()).get();
+		findBoard.setCnt(findBoard.getCnt()+1);
+		return boardRepo.save(findBoard);
 	}
 
+	//게시글 작성하기
 	@Override
 	public void insertBoard(Board board) {
 		boardRepo.save(board);  //insert받은 내용을 Repo에 저장

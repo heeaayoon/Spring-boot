@@ -37,4 +37,12 @@ public class BoardController {
 		return "redirect:getBoardList"; //WEB-INF 아래의 getBoardList.jsp 호출(등록한 내용이 추가되어 있음)
 	}
 	
+	@GetMapping("/getBoard")
+	public String getBoard(Board board, Model model){
+		model.addAttribute("board", boardService.getBoard(board));
+		return "getBoard";
+	}
+	
+	
+	
 }
