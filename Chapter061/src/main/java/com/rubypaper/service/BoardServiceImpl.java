@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void insertBoard(Board board) {
-		//boardRepo.
+		boardRepo.save(board);  //insert받은 내용을 Repo에 저장
 	}
 
 	@Override
