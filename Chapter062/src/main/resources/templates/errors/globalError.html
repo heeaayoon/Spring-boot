@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Exception</title>
+</head>
+<body>
+	 <h1><font color="orange">Exception 발생!</font></h1>
+	 <a th:href="@{/}">메인화면으로</a><hr>
+	 <table>
+		 <tr>
+		 	<th bgcolor="orange" align="left">예외메시지: [[${exceptionMessage}]]</th>
+		 </tr>
+		 <tr th:each="trace : ${stackTrace}"> 
+<!-- 		 stackTrace내의 한줄씩 trace에 넣어서 -->
+		 	<td th:text="${trace}"></td> 
+<!-- 		 	여기서 출력 -->
+		 </tr>
+	 </table>
+</body>
+</html>
