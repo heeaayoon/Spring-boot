@@ -30,7 +30,7 @@ public class LoginController {
 	@GetMapping("/auth1")
 	public @ResponseBody ResponseEntity<?> auth1(@AuthenticationPrincipal SecurityUser user){
 		if(user==null) {
-			return ResponseEntity.ok(user);
+			return ResponseEntity.ok("로그인 상태가 아닙니다.");
 		}
 		return ResponseEntity.ok(user);
 	}
